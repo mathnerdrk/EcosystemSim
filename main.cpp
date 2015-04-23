@@ -6,9 +6,24 @@
 
 using namespace std;
 
-//global variables:
-
 //classes:
+class Organism
+{
+public:
+  string name;
+  int currentAge;
+  int deathAge; // what age will the organism die (if it is still alive) getting to an old age?
+  Organism();
+}
+//global variables:
+vector<m_organism> org;
+
+//constructor
+Organism::Organism()
+{
+  cout << "Organism being created and adding to vector....\n"; //change to file io later
+  org.push_back(*this);
+}
 
 //method declarations:
 /*example:
