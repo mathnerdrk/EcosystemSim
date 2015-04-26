@@ -7,34 +7,34 @@
 using namespace std;
 
 //global variables:
-vector<m_organism> org;
+vector<Organism> org;
 
 //classes:
 class Species
 {
 public:
-  Species(String nameT) // constructor
+  Species(string nameT) //constructor
   {
-    *this.name = nameT;
+    name = nameT;
   }
 private: 
   string name;
-}
+};
 
 class Organism
 {
 public:
-  Organism(Species vName) //constructor
+  Organism(Species vName) 
   {
     cout << "Organism being created and adding to vector....\n"; //change to file io later
     org.push_back(*this);
-    *this.speciesN = vName;
+    speciesN = vName;
   }
 private: 
   int currentAge;
   int deathAge; // what age will the organism die (if it is still alive) getting to an old age?
   Species speciesN;
-}
+};
 
 //method declarations:
 /*example:
