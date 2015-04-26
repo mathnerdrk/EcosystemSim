@@ -6,23 +6,34 @@
 
 using namespace std;
 
-//classes:
-class Organism
-{
-public:
-  string name;
-  int currentAge;
-  int deathAge; // what age will the organism die (if it is still alive) getting to an old age?
-  Organism();
-}
 //global variables:
 vector<m_organism> org;
 
-//constructor
-Organism::Organism()
+//classes:
+class Species
 {
-  cout << "Organism being created and adding to vector....\n"; //change to file io later
-  org.push_back(*this);
+public:
+  Species(String nameT) // constructor
+  {
+    *this.name = nameT;
+  }
+private: 
+  string name;
+}
+
+class Organism
+{
+public:
+  Organism(Species vName) //constructor
+  {
+    cout << "Organism being created and adding to vector....\n"; //change to file io later
+    org.push_back(*this);
+    *this.speciesN = vName;
+  }
+private: 
+  int currentAge;
+  int deathAge; // what age will the organism die (if it is still alive) getting to an old age?
+  Species speciesN;
 }
 
 //method declarations:
