@@ -61,8 +61,8 @@ int main()
 		names.name = name;
 
 		cout << "How many organisms are present of given species?: ";
-		int numOrgasm;
-		cin >> numOrgasm;
+		int numOrganism;
+		cin >> numOrganism;
 
 		cout << "What is the starting mass of all the organisms of the given species?: ";
 		int mass;
@@ -76,12 +76,12 @@ int main()
 
 		spec.push_back(names);
 
-		for(int i = 0; i < numOrgasm; i++)
+		for(int i = 0; i < numOrganism; i++)
 		{
-			Organism orgasm(names);
-			orgasm.currentAge = 0;
-			orgasm.currentMass = orgasm.speciesN.startMass;
-			org.push_back(orgasm);
+			Organism organism(names);
+			organism.currentAge = 0;
+			organism.currentMass = organism.speciesN.startMass;
+			org.push_back(organism);
 		}
 
 		cout << "All " << names.name << "s starting at age 0" << endl;
