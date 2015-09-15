@@ -1,4 +1,4 @@
-#include<iostream> //basic c++ library
+#include<iostream> //basic c++ input/output library
 #include<fstream> // file IO library
 #include<string> // string library
 #include<vector> //vector library
@@ -51,7 +51,7 @@ int main()
 	int species;
 	cin >> species;
 
-	for(int i = 0; i < species; i++)
+	for(unsigned int i = 0; i < species; i++)
 	{
 		Species names;
 
@@ -76,7 +76,7 @@ int main()
 
 		spec.push_back(names);
 
-		for(int i = 0; i < numOrganism; i++)
+		for(unsigned int i = 0; i < numOrganism; i++)
 		{
 			Organism organism(names);
 			organism.currentAge = 0;
@@ -100,10 +100,10 @@ int main()
 	string choice = "a";
 	while(choice[0] != 'z') // loop to stay in program, z to quit (unless you want it to be 'q')
 	{
-		cout << "Please choose one of the following options:";
-		cout << "(a) - Advance six months" << endl;
-		cout << "(b) - Advance one year" << endl;
-		cout << "(c) - Advance five years" << endl;
+		cout << "Please choose one of the following options:" << endl;
+		cout << "(a) - Advance one year" << endl;
+		cout << "(b) - Advance five years" << endl;
+		cout << "(f) - List out number of each species" << endl;
 		cout << "(g) - List out all organisms alive at present" << endl;
 		//cout << "(h) - there will be more things we need to do later
 		cout << "(z) - Quit" << endl;
@@ -115,40 +115,63 @@ int main()
 		case 'a':
 			{
 				//in development
-				for(int i = 0; i < org.size(); i++)
-				{
-					org[i].currentAge+= 0.5;
-				}
-			}
-		case 'b':
-			{
-				//in development
-				for(int i = 0; i < org.size(); i++)
+				for(unsigned int i = 0; i < org.size(); i++)
 				{
 					org[i].currentAge+= 1;
 				}
 				oneYear();
+
+				break;
 			}
-		case 'c':
+
+		case 'b':
 			{
 				//in development
-				for(int i = 0; i < org.size(); i++)
+				for(unsigned int i = 0; i < org.size(); i++)
 				{
-					org[i].currentAge+= 1;
+					org[i].currentAge+= 5;
 				}
 				for(int i = 0; i < 5; i++) oneYear();
+
+				break;
 			}
+
+		case 'f':
+			{
+				//checking for number of each species by name
+				string name = org[0].speciesN.name;
+				int counter = 1;
+
+				org::iterator iter;
+
+				for(iter = org.being + 1 ; i != org.end; i++)
+				{
+					if(name.compare(*iter.speciesN.name) != 0)
+					{
+						name = *iter.speciesN.name;
+
+					}
+				}
+
+			}
+
 		case 'g':
 			{
-				for(int i = 0; i < org.size(); i++)
+				//printing each species
+				for(unsigned int i = 0; i < org.size(); i++)
 				{
 					cout << "Name: " << org[i].speciesN.name << ", Age: " << org[i].currentAge << endl;
 				}
+
+				break;
 			}
+
 		case 'z': break;
+
 		default:
 			{
-
+				cout << "Not a valid option...\n";
+				break;
 			}
 		}
 	}
@@ -164,13 +187,14 @@ void oneYear()
 	//in development
 	for(int i = 0; i < org.size(); i++)
 	{
-		int massreq = org[i].speciesN.masstoNotDie;
+		int massreq = org[i].speciesN.masstoNotDie; //mass required not to die
+			//will add later the death of species
 		int temp1 = org[i].speciesN.prey.size();
 		Species *most = new Species[temp1];
 		
-		for(int i = 0; i < temp1; i++)
+		for(unsigned int i = 0; i < temp1; i++)
 		{
-			for(int j = i; j < temp1; j++)
+			for(unsigned int j = i; j < temp1; j++)
 			{
 				//in development
 			}
