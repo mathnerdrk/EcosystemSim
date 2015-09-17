@@ -2,6 +2,7 @@
 #include<fstream> // file IO library
 #include<string> // string library
 #include<vector> //vector library
+#include<algorithm> //algorithm library
 //can add more #includes if need more libraries
 
 using namespace std;
@@ -25,21 +26,29 @@ public:
 class Organism
 {
 public:
-	Organism(Species vName); // constructor
+	Organism(Species vName, int iMember); // constructor
 
 	float currentAge;
 	Species speciesN;
 	float currentMass;
+
+	 const int getMember() const
+	 {
+		 return(this->member);
+	 }
+
+private:
+	 int member; //i'd like this to be constant...
 };
 
-vector<Organism> org; //Would it be better to have an array with a set limit? That way it is easier to have organisms die &
-//"delete" them (unless there is a vector method that does this automatically that I'm forgetting?)
+vector<Organism> org;
 vector<Species> spec;
 
-Organism::Organism(Species vName)
+Organism::Organism(Species vName, int iMember) : member(iMember)
 {
 	//cout << "Organism being created and adding to vector....\n"; //change to file io later
 	speciesN = vName;
+	member = iMember;
 }
 //method declarations:
 
@@ -76,15 +85,15 @@ int main()
 
 		spec.push_back(names);
 
-		for(unsigned int i = 0; i < numOrganism; i++)
+		for(unsigned int j = 0; j < numOrganism; j++)
 		{
-			Organism organism(names);
+			Organism organism(names, i);
 			organism.currentAge = 0;
 			organism.currentMass = organism.speciesN.startMass;
 			org.push_back(organism);
 		}
 
-		cout << "All " << names.name << "s starting at age 0" << endl;
+		cout << "All " << names.name << "s will start at age 0" << endl;
 
 		cout << "At what age will the organisms of the species specified be mature enough to reproduce?: ";
 		int repAge;
@@ -139,19 +148,24 @@ int main()
 		case 'f':
 			{
 				//checking for number of each species by name
-				string name = org[0].speciesN.name;
-				int counter = 1;
+				int prevChange = 0;
+				int i = 0;
+				int counter = 0;
 
-				org::iterator iter;
+				vector<Organism>::iterator iter;
 
-				for(iter = org.being + 1 ; i != org.end; i++)
+				for(iter = org.begin(); iter != org.end(); iter++, i++, counter++)
 				{
-					if(name.compare(*iter.speciesN.name) != 0)
+					if(org[prevChange].getMember() == (*iter).getMember())
 					{
-						name = *iter.speciesN.name;
+						cout << org[prevChange].speciesN.name << ": " << counter;
 
+						prevChange = i;
+						counter = 1;
 					}
 				}
+
+				break;
 
 			}
 
