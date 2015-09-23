@@ -3,6 +3,9 @@
 #include<string> // string library
 #include<vector> //vector library
 #include<algorithm> //algorithm library
+
+#include "Species.h" //Species class declaration
+#include "Organism.h" //Organism class declaration
 //can add more #includes if need more libraries
 
 using namespace std;
@@ -10,46 +13,9 @@ using namespace std;
 //global variables:
 int year = 0;
 
-//classes:
-class Species
-{
-public:
-	string name;
-	int reprAge; //what age will the organism be mature enough to produce offspring
-	int deathAge; // what age will the organism die (if it is still alive) getting to an old age?
-	int startMass; //what is the mass the organism is born?
-	int masstoNotDie; //what is the amount of mass increased every year?
-	vector<Species> predators; //what organisms will eat this species?
-	vector<Species> prey; //what organisms will this species eat?
-};
-
-class Organism
-{
-public:
-	Organism(Species vName, int iMember); // constructor
-
-	float currentAge;
-	Species speciesN;
-	float currentMass;
-
-	 const int getMember() const
-	 {
-		 return(this->member);
-	 }
-
-private:
-	 int member; //i'd like this to be constant...
-};
-
 vector<Organism> org;
 vector<Species> spec;
 
-Organism::Organism(Species vName, int iMember) : member(iMember)
-{
-	//cout << "Organism being created and adding to vector....\n"; //change to file io later
-	speciesN = vName;
-	member = iMember;
-}
 //method declarations:
 
 void oneYear();
@@ -70,16 +36,16 @@ int main()
 		names.name = name;
 
 		cout << "How many organisms are present of given species?: ";
-		int numOrganism;
+		double numOrganism;
 		cin >> numOrganism;
 
 		cout << "What is the starting mass of all the organisms of the given species?: ";
-		int mass;
+		double mass;
 		cin >> mass;
 		names.startMass = mass;
 
 		cout << "How much increase of mass is needed for the organism to stay alive?: ";
-		int alive;
+		double alive;
 		cin >> alive;
 		names.masstoNotDie = alive;
 
@@ -96,12 +62,12 @@ int main()
 		cout << "All " << names.name << "s will start at age 0" << endl;
 
 		cout << "At what age will the organisms of the species specified be mature enough to reproduce?: ";
-		int repAge;
+		double repAge;
 		cin >> repAge;
 		names.reprAge = repAge;
 
 		cout << "At what age will the organisms of the species specified die, if it is able to reach that age?: ";
-		int deathAge;
+		double deathAge;
 		cin >> deathAge;
 		names.deathAge = deathAge;
 	}
@@ -114,7 +80,7 @@ int main()
 		cout << "(b) - Advance five years" << endl;
 		cout << "(f) - List out number of each species" << endl;
 		cout << "(g) - List out all organisms alive at present" << endl;
-		//cout << "(h) - there will be more things we need to do later
+		//cout << "(h) - there will be more things I need to do later
 		cout << "(z) - Quit" << endl;
 
 		cin >> choice;
@@ -156,14 +122,16 @@ int main()
 
 				for(iter = org.begin(); iter != org.end(); iter++, i++, counter++)
 				{
-					if(org[prevChange].getMember() == (*iter).getMember())
+					if(org[prevChange].getMember() != iter->getMember())
 					{
-						cout << org[prevChange].speciesN.name << ": " << counter;
+						cout << org[prevChange].speciesN.name << ": " << counter << endl;
 
 						prevChange = i;
-						counter = 1;
+						counter = 0;
 					}
 				}
+
+				cout << org[prevChange].speciesN.name << ": " << counter << endl;;
 
 				break;
 
@@ -190,6 +158,7 @@ int main()
 		}
 	}
 
+	cout << "Program is terminating...";
 
 	return 0;
 }
