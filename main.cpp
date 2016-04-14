@@ -8,6 +8,8 @@
 #include "Organism.h" //Organism class declaration
 //can add more #includes if need more libraries
 
+//noah is cool
+
 using namespace std;
 
 //global variables:
@@ -174,7 +176,7 @@ void oneYear()
 			//will add later the death of species
 		int temp1 = org[i].speciesN.prey.size();
 		Species *most = new Species[temp1];
-		
+
 		for(unsigned int i = 0; i < temp1; i++)
 		{
 			for(unsigned int j = i; j < temp1; j++)
