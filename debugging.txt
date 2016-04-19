@@ -1,0 +1,34 @@
+-------------------Degbugging Test-------------------
+Name of Species: Hooligan
+	Species Reproduction Age: 21
+	Species Death Age: 89
+	Species Start Mass: 56
+	Species Mass per Year to Not Die: 2
+	Organism Current Age: 65
+	Organism Current Mass: 56
+
+Name of Species: Hooligan
+	Species Reproduction Age: 21
+	Species Death Age: 89
+	Species Start Mass: 56
+	Species Mass per Year to Not Die: 2
+	Organism Current Age: 65
+	Organism Current Mass: 56
+
+Name of Species: Yak
+	Species Reproduction Age: 17
+	Species Death Age: 92
+	Species Start Mass: 72
+	Species Mass per Year to Not Die: 3
+	Organism Current Age: 65
+	Organism Current Mass: 72
+
+Name of Species: Yak
+	Species Reproduction Age: 17
+	Species Death Age: 92
+	Species Start Mass: 72
+	Species Mass per Year to Not Die: 3
+	Organism Current Age: 65
+	Organism Current Mass: 72
+
+-----------------------------------------------------

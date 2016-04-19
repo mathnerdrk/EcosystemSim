@@ -1,0 +1,18 @@
+1. Fix Minor Bugs that Appear:
+	-Strings w/Spaces (look at #2)
+	-Formatting File IO Fixes
+	-Community Options for File IO
+2. Change Input types to Strings (then check if double)
+3. Death of Organism
+	-Shows how Organism died (File IO) when dies
+	-Shows Age that it died of Organism
+	-Shows something else I'm forgetting
+	 
+	-Death when Reaches Death Age **done**
+	-Death when gets Eaten (this one will be hard - i guess you could randomize it, possible customization later)
+	-Death when does not eat enough
+4. Reproduction
+	-Shows when a baby was born (File IO)
+5. Predator and Prey Options
+	-Vectors already in Class, just have user input in user-friendly way
+6. Add GUI System (better UI)
